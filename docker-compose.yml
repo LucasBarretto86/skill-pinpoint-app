@@ -1,0 +1,41 @@
+name: "skill-pinpoint-app"
+
+services:
+  rails:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: skill-pinpoint-app_c
+    depends_on:
+      - postgres
+    environment:
+      RAILS_ENV: "development"
+      DB_HOST: "postgres"
+      DB_USERNAME: "postgres"
+      DB_PASSWORD: "postgres"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/rails
+      - ./db:/rails/db
+    networks:
+      - default
+
+  postgres:
+    image: postgres:16
+    container_name: skill-pinpoint-app_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - default
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  postgres-data:
