@@ -10,9 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_17_134511) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_18_135629) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "survey_participants", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "email", default: "", null: false
+    t.string "corporate_email", default: "", null: false
+    t.string "department", default: "", null: false
+    t.string "position", default: "", null: false
+    t.string "function", default: "", null: false
+    t.string "location", default: "", null: false
+    t.string "company_tenure", default: "", null: false
+    t.string "gender", default: "", null: false
+    t.string "generation", default: "", null: false
+    t.string "lv0_company", default: "", null: false
+    t.string "lv1_directorate", default: "", null: false
+    t.string "lv2_management", default: "", null: false
+    t.string "lv3_coordination", default: "", null: false
+    t.string "lv4_area", default: "", null: false
+    t.bigint "survey_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_id"], name: "index_survey_participants_on_survey_id"
+  end
+
+  create_table "survey_questions", force: :cascade do |t|
+    t.text "prompt", default: "", null: false
+    t.string "kind", default: "", null: false
+    t.bigint "survey_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
+  end
+
+  create_table "survey_responses", force: :cascade do |t|
+    t.string "answer", default: "", null: false
+    t.text "comment", default: ""
+    t.datetime "answered_at"
+    t.bigint "survey_question_id", null: false
+    t.bigint "survey_participant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_participant_id"], name: "index_survey_responses_on_survey_participant_id"
+    t.index ["survey_question_id"], name: "index_survey_responses_on_survey_question_id"
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "description", default: "", null: false
+    t.string "status", default: "drafted", null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +79,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_17_134511) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "survey_participants", "surveys"
+  add_foreign_key "survey_questions", "surveys"
+  add_foreign_key "survey_responses", "survey_participants"
+  add_foreign_key "survey_responses", "survey_questions"
 end
