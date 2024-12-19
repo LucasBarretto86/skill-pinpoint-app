@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <h2 class="text-center">Log In</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f| %>
+    <div class="mb-3">
+      <%= f.label :email, class: "form-label" %>
+      <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :password, class: "form-label" %>
+      <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+    </div>
+    <div class="mb-3 form-check">
+      <%= f.check_box :remember_me, class: "form-check-input" if devise_mapping.rememberable? %>
+      <%= f.label :remember_me, class: "form-check-label" if devise_mapping.rememberable? %>
+    </div>
+    <%= f.submit "Log In", class: "btn btn-primary w-100" %>
+  <% end %>
+</div>
