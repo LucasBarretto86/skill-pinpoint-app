@@ -4,8 +4,8 @@ FactoryBot.define do
   factory :response, class: "Survey::Response" do
     answer { "5" }
     comment { Faker::Lorem.sentence }
-    association(:question, factory: :question, strategy: :build)
-    association(:participant, factory: :participant, strategy: :build)
+    association(:question)
+    association(:participant)
 
     trait :valid_answer do
       after(:build) do |response|

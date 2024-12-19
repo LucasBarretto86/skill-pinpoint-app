@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :question, class: "Survey::Question" do
     sequence(:prompt) { |n| "Question #{n}?" }
     kind { "nps" }
-    association(:survey)
+    association(:poll)
   end
 end

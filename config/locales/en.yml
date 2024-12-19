@@ -1,18 +1,36 @@
 en:
-  csv:
-    attributes:
-      nome: :name
-      email: :email
-      email_corporativo: :corporate_email
-      area: :department
-      cargo: :position
-      funcao: :function
-      localidade: :location
-      tempo_de_empresa: :company_tenure
-      genero: :gender
-      geracao: :generation
-      n0_empresa: :lv0_company
-      n1_diretoria: :lv1_directorate
-      n2_gerencia: :lv2_management
-      n3_coordenacao: :lv3_coordination
-      n4_area: :lv4_area
+  libs:
+    survey_processor:
+      headers:
+        nome: "name"
+        email: "email"
+        email_corporativo: "corporate_email"
+        area: "department"
+        cargo: "position"
+        funcao: "function"
+        localidade: "location"
+        tempo_de_empresa: "company_tenure"
+        genero: "gender"
+        geracao: "generation"
+        n0_empresa: "lv0_company"
+        n1_diretoria: "lv1_directorate"
+        n2_gerencia: "lv2_management"
+        n3_coordenacao: "lv3_coordination"
+        n4_area: "lv4_area"
+        "Data da Resposta": "response_date"
+        "Interesse no Cargo": "job_interest"
+        "Comentários - Interesse no Cargo": "job_interest_comments"
+        "Contribuição": "contribution"
+        "Comentários - Contribuição": "contribution_comments"
+        "Aprendizado e Desenvolvimento": "learning_and_development"
+        "Comentários - Aprendizado e Desenvolvimento": "learning_and_development_comments"
+        "Feedback": "feedback"
+        "Comentários - Feedback": "feedback_comments"
+        "Interação com Gestor": "manager_interaction"
+        "Comentários - Interação com Gestor": "manager_interaction_comments"
+        "Clareza sobre Possibilidades de Carreira": "career_opportunities_clarity"
+        "Comentários - Clareza sobre Possibilidades de Carreira": "career_opportunities_clarity_comments"
+        "Expectativa de Permanência": "retention_expectation"
+        "Comentários - Expectativa de Permanência": "retention_expectation_comments"
+        "eNPS": "enps"
+        "[Aberta] eNPS": "enps_comments"

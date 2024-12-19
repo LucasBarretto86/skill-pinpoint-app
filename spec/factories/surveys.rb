@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :survey do
-    sequence(:name) { |n| "Survey #{n}" }
+    sequence(:title) { |n| "Survey #{n}" }
     description { Faker::Lorem.sentence }
     status { "drafted" }
     start_date { Date.current + 1.day }

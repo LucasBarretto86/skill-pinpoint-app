@@ -8,12 +8,14 @@ RSpec.describe Survey::Response, type: :model do
       association = described_class.reflect_on_association(:participant)
       expect(association.macro).to eq(:belongs_to)
       expect(association.options[:class_name]).to eq("Survey::Participant")
+      expect(association.options[:foreign_key]).to eq("survey_participant_id")
     end
 
     it "belongs_to question" do
       association = described_class.reflect_on_association(:question)
       expect(association.macro).to eq(:belongs_to)
       expect(association.options[:class_name]).to eq("Survey::Question")
+      expect(association.options[:foreign_key]).to eq("survey_question_id")
     end
   end
 
@@ -59,7 +61,7 @@ RSpec.describe Survey::Response, type: :model do
         response = build(:response, :valid_answer)
 
         expect { response.save! }.to change { response.answered_at }.from(nil)
-        expect(response.answered_at&.to_time).to be_instance_of(Time)
+        expect(response.answered_at.to_time).to be_instance_of(Time)
       end
     end
   end

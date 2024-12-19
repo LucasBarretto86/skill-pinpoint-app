@@ -4,12 +4,13 @@ class Survey < ApplicationRecord
   STATUS = %w[drafted opened closed].freeze
 
   has_many :participants, class_name: "Survey::Participant", foreign_key: "survey_id"
-  has_many :questions, class_name: "Survey::Question", foreign_key: "survey_id"
+  has_many :polls, class_name: "Survey::Poll", foreign_key: "survey_id"
+  has_many :questions, class_name: "Survey::Question", through: :polls
   has_many :responses, class_name: "Survey::Response", through: :questions
 
   enum status: STATUS.index_by(&:itself)
 
-  validates :name, :start_date, :end_date, :description, presence: true
+  validates :title, :start_date, :end_date, :description, presence: true
   validates :status, inclusion: { in: STATUS }
 
   validate :start_date_greater_than_current_time, if: :start_date

@@ -10,15 +10,18 @@ RSpec.describe Survey::Question, type: :model do
   end
 
   describe "Associations" do
-    it "belongs_to survey" do
-      association = described_class.reflect_on_association(:survey)
+    it "belongs_to poll" do
+      association = described_class.reflect_on_association(:poll)
       expect(association.macro).to eq(:belongs_to)
+      expect(association.options[:class_name]).to eq("Survey::Poll")
+      expect(association.options[:foreign_key]).to eq("survey_poll_id")
     end
 
     it "has_many responses" do
       association = described_class.reflect_on_association(:responses)
       expect(association.macro).to eq(:has_many)
       expect(association.options[:class_name]).to eq("Survey::Response")
+      expect(association.options[:foreign_key]).to eq("survey_question_id")
     end
   end
 
@@ -28,7 +31,7 @@ RSpec.describe Survey::Question, type: :model do
 
       expect(question).to be_invalid
       expect(question.errors.count).to eq(3)
-      expect(question.errors["survey"]).to eq(["must exist"])
+      expect(question.errors["poll"]).to eq(["must exist"])
       expect(question.errors["prompt"]).to eq(["can't be blank"])
       expect(question.errors["kind"]).to eq(["is not included in the list"])
     end

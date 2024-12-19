@@ -36,13 +36,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_18_135629) do
     t.index ["survey_id"], name: "index_survey_participants_on_survey_id"
   end
 
-  create_table "survey_questions", force: :cascade do |t|
-    t.text "prompt", default: "", null: false
-    t.string "kind", default: "", null: false
+  create_table "survey_polls", force: :cascade do |t|
+    t.string "title", default: ""
+    t.text "description", default: ""
     t.bigint "survey_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
+    t.index ["survey_id"], name: "index_survey_polls_on_survey_id"
+  end
+
+  create_table "survey_questions", force: :cascade do |t|
+    t.text "prompt", default: "", null: false
+    t.string "kind", default: "", null: false
+    t.bigint "survey_poll_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_poll_id"], name: "index_survey_questions_on_survey_poll_id"
   end
 
   create_table "survey_responses", force: :cascade do |t|
@@ -58,7 +67,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_18_135629) do
   end
 
   create_table "surveys", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "title", default: "", null: false
     t.string "description", default: "", null: false
     t.string "status", default: "drafted", null: false
     t.datetime "start_date", null: false
@@ -80,7 +89,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_18_135629) do
   end
 
   add_foreign_key "survey_participants", "surveys"
-  add_foreign_key "survey_questions", "surveys"
+  add_foreign_key "survey_polls", "surveys"
+  add_foreign_key "survey_questions", "survey_polls"
   add_foreign_key "survey_responses", "survey_participants"
   add_foreign_key "survey_responses", "survey_questions"
 end

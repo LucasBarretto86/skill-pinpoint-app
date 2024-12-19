@@ -14,12 +14,21 @@ RSpec.describe Survey, type: :model do
       association = described_class.reflect_on_association(:participants)
       expect(association.macro).to eq(:has_many)
       expect(association.options[:class_name]).to eq("Survey::Participant")
+      expect(association.options[:foreign_key]).to eq("survey_id")
+    end
+
+    it "has_many polls" do
+      association = described_class.reflect_on_association(:polls)
+      expect(association.macro).to eq(:has_many)
+      expect(association.options[:class_name]).to eq("Survey::Poll")
+      expect(association.options[:foreign_key]).to eq("survey_id")
     end
 
     it "has_many questions" do
       association = described_class.reflect_on_association(:questions)
       expect(association.macro).to eq(:has_many)
       expect(association.options[:class_name]).to eq("Survey::Question")
+      expect(association.options[:through]).to eq(:polls)
     end
 
     it "has_many responses" do
@@ -41,7 +50,7 @@ RSpec.describe Survey, type: :model do
 
       expect(survey).to be_invalid
       expect(survey.errors.count).to eq(5)
-      expect(survey.errors["name"]).to eq(["can't be blank"])
+      expect(survey.errors["title"]).to eq(["can't be blank"])
       expect(survey.errors["description"]).to eq(["can't be blank"])
       expect(survey.errors["status"]).to eq(["is not included in the list"])
       expect(survey.errors["start_date"]).to eq(["can't be blank"])
