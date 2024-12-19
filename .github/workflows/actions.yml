@@ -43,9 +43,10 @@ jobs:
 
     env:
       RAILS_ENV: test
-      DB_HOST: "postgres"
+      DB_HOST: "localhost"
       DB_USERNAME: "postgres"
       DB_PASSWORD: "postgres"
+
     steps:
       - uses: actions/checkout@v4
 
