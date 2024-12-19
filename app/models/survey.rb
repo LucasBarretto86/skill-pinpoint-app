@@ -29,3 +29,17 @@ class Survey < ApplicationRecord
       end
     end
 end
+
+# == Schema Information
+#
+# Table name: surveys
+#
+#  id          :bigint           not null, primary key
+#  description :string           default(""), not null
+#  end_date    :datetime         not null
+#  start_date  :datetime         not null
+#  status      :string           default("drafted"), not null
+#  title       :string           default(""), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
