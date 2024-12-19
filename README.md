@@ -1,32 +1,21 @@
 # Skill Pinpoint App
 
-## Stack
+- [Skill Pinpoint App](#skill-pinpoint-app)
+  - [Tasks](#tasks)
+    - [Completion tracking](#completion-tracking)
+  - [Solution: Comments and observations](#solution-comments-and-observations)
+    - [Stack](#stack)
+    - [Getting Started](#getting-started)
+      - [Running app](#running-app)
+      - [Loading csv data](#loading-csv-data)
 
-- Ruby 3.3.0
-- Rails 7.1.4
-- Postgresql 16
-- Rspec + FactoryBot + Faker
-- Devise
-- Bootstrap
-- Docker
-- GitHub actions for Linter and CI
-- Rubocop and Brakeman
-
-## Getting Started
-
-To start the application run:
-
-```rb
-docker-compose -f docker-compose.dev.yml up --build
-```
-
-> The application on development will run on `http://localhost:3000`
+---
 
 ## Tasks
 
-### Completed Tasks
+### Completion tracking
 
-- [ ] [Task 1: Create a Basic Database](#task-1-create-a-basic-database)
+- [X] [Task 1: Create a Basic Database](#task-1-create-a-basic-database)
 - [ ] [Task 2: Create a Basic Dashboard](#task-2-create-a-basic-dashboard)
 - [ ] [Task 3: Create a Test Suite](#task-3-create-a-test-suite)
 - [X] [Task 4: Create a Docker Compose Setup](#task-4-create-a-docker-compose-setup)
@@ -41,9 +30,9 @@ docker-compose -f docker-compose.dev.yml up --build
 
 ---
 
-## Task Descriptions
+### Tasks Overview
 
-### Task 1: Create a Basic Database
+#### Task 1: Create a Basic Database
 
 **Objective**: Design and implement a database to structure the data from the CSV file.
 
@@ -62,7 +51,7 @@ docker-compose -f docker-compose.dev.yml up --build
 
 ---
 
-### Task 2: Create a Basic Dashboard
+#### Task 2: Create a Basic Dashboard
 
 **Objective**: Develop a simple dashboard to display important data insights.
 
@@ -86,7 +75,7 @@ docker-compose -f docker-compose.dev.yml up --build
 
 ---
 
-### Task 3: Create a Test Suite
+#### Task 3: Create a Test Suite
 
 **Objective**: Write tests to ensure the reliability and correctness of your codebase.
 
@@ -105,7 +94,7 @@ docker-compose -f docker-compose.dev.yml up --build
 
 ---
 
-### Task 4: Create a Docker Compose Setup
+#### Task 4: Create a Docker Compose Setup
 
 **Objective**: Containerize your application and its services using Docker Compose.
 
@@ -123,7 +112,7 @@ docker-compose -f docker-compose.dev.yml up --build
 
 ---
 
-### Task 5: Exploratory Data Analysis
+#### Task 5: Exploratory Data Analysis
 
 **Objective**: Analyze the dataset to extract meaningful insights.
 
@@ -136,7 +125,7 @@ docker-compose -f docker-compose.dev.yml up --build
 
 ---
 
-### Task 6: Data Visualization - Company Level
+#### Task 6: Data Visualization - Company Level
 
 **Objective**: Create visualizations that provide insights at the company-wide level.
 
@@ -159,7 +148,7 @@ docker-compose -f docker-compose.dev.yml up --build
 
 ---
 
-### Task 7: Data Visualization - Area Level
+#### Task 7: Data Visualization - Area Level
 
 **Objective**: Create visualizations focusing on specific areas or departments within the company.
 
@@ -183,7 +172,7 @@ docker-compose -f docker-compose.dev.yml up --build
 
 ---
 
-### Task 8: Data Visualization - Employee Level
+#### Task 8: Data Visualization - Employee Level
 
 **Objective**: Create visualizations that focus on individual employee data.
 
@@ -206,7 +195,7 @@ docker-compose -f docker-compose.dev.yml up --build
 
 ---
 
-### Task 9: Build a Simple API
+#### Task 9: Build a Simple API
 
 **Objective**: Develop an API to serve data from the dataset.
 
@@ -223,7 +212,7 @@ docker-compose -f docker-compose.dev.yml up --build
 
 ---
 
-### Task 10: Sentiment Analysis
+#### Task 10: Sentiment Analysis
 
 **Objective**: Perform sentiment analysis on the comment fields.
 
@@ -240,7 +229,7 @@ Portuguese.
 
 ---
 
-### Task 11: Report Generation
+#### Task 11: Report Generation
 
 **Objective**: Generate a report highlighting key aspects of the data.
 
@@ -252,7 +241,7 @@ Portuguese.
 
 ---
 
-### Task 12: Creative Exploration
+#### Task 12: Creative Exploration
 
 **Objective**: Explore the dataset in a way that interests you.
 
@@ -263,3 +252,54 @@ Portuguese.
 - Document your process, findings, and any conclusions drawn.
 
 ---
+
+## Solution: Comments and observations
+
+### Stack
+
+- Ruby 3.3.0
+- Rails 7.1.4
+- Postgresql 16
+- Rspec + FactoryBot + Faker
+- Devise
+- Bootstrap
+- Docker
+- GitHub actions for Linter and CI
+- Rubocop and Brakeman
+
+### Getting Started
+
+#### Running app
+
+To start the application run:
+
+```rb
+docker-compose -f docker-compose.dev.yml up --build
+```
+
+> The application on development will run on `http://localhost:3000`
+
+#### Loading csv data
+
+I have created a Lib `SurveyCSVProcessor::Mapper` to map and inject the data from the csv file, maybe I could have
+done it all as seed, or using tasks, but creating a lib made my life just easier, it's a very simple lib .
+
+In Flexcode, when I did data migration I used lots of CSVs to map, validate, and extract data,
+but I used rake tasks, and it gave hard times, specially to keep code clear, clean and modular, so I choose to go in
+another direction this time.
+
+I kept the `data.csv` file within the libs folder, but in real world I would keep it on `tmp` to avoid versioning it.
+
+**Lib usage:**
+
+With seeds:
+
+```sh
+bin/rails db:prepare
+```
+
+On rails console:
+
+```rb
+SurveyCSVProcessor.new('data').inject! 
+```

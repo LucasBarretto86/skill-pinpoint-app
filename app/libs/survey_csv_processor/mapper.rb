@@ -8,7 +8,7 @@ module SurveyCSVProcessor
 
     def initialize(filename)
       @filename = filename
-      @csv = CSV.read(csv_path(filename), liberal_parsing: true)
+      @csv = CSV.read(csv_input_path(filename), liberal_parsing: true)
       @headers, *@rows = @csv.map { |row| row[0].split(";") }
     end
 
@@ -74,8 +74,8 @@ module SurveyCSVProcessor
     end
 
     private
-      def csv_path(filename)
-        file = Rails.root.join("tmp/libs/survey_csv_processor/", "#{filename}.csv")
+      def csv_input_path(filename)
+        file = Rails.root.join("app/libs/survey_csv_processor/mapper/input", "#{filename}.csv")
         raise "File doesnt exist: #{file}" unless File.exist?(file)
 
         file
