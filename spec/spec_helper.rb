@@ -18,22 +18,19 @@
 require "simplecov"
 
 RSpec.configure do |config|
-  `git diff --name-only $(git merge-base 54d8f94e81 HEAD)`.split("\n")
+  SimpleCov.start "rails" do
+    enable_coverage(:branch)
+    primary_coverage(:branch)
 
-  SimpleCov.profiles.define "personal" do
     add_group "Models", "app/models"
     add_group "Controllers", "app/controllers"
     add_group "Helpers", "app/helpers"
-    add_group "Channels", "app/channel"
     add_group "Libraries", "app/libs"
     add_group "Services", "app/controllers/services"
-    add_group "Mailers", "app/channel"
     add_group "Businesses", "app/controllers/business"
-  end
-
-  SimpleCov.start "personal" do
-    enable_coverage(:branch)
-    primary_coverage(:branch)
+    add_group "Mailers", "app/mailers"
+    add_group "Channels", "app/channel"
+    add_group "Jobs", "app/jobs"
 
     add_filter "spec"
     add_filter "config"
