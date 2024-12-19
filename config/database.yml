@@ -15,10 +15,9 @@
 default: &default
   adapter: postgresql
   <% if ENV["DB_HOST"] %>
-  host: <%= ENV["DB_HOST"] %>
-  username: <%= ENV["DB_USERNAME"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
-  port: <%= ENV["DB_PORT"] || 5432 %>
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   <% end %>
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide

@@ -30,7 +30,7 @@ jobs:
     environment: test
     env:
       RAILS_ENV: test
-      DB_HOST: "localhost"
+      DB_HOST: "postgres"
       DB_USERNAME: "postgres"
       DB_PASSWORD: "postgres"
 
@@ -57,6 +57,12 @@ jobs:
 
       - name: Brakeman
         run: bundle exec brakeman -q -w2
+
+      - run: |
+          until pg_isready -h postgres -U postgres; do
+            echo "Waiting for PostgreSQL to be ready..."
+            sleep 2
+          done
 
       - name: Prepare Database
         run: |
