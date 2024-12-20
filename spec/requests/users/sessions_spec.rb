@@ -18,4 +18,13 @@ RSpec.describe Users::SessionsController, type: :request do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe "DELETE #destroy" do
+    let(:user) { create(:user) }
+
+    it "returns http success" do
+      delete destroy_user_session_path(user)
+      expect(response).to assert_redirected_to(unauthenticated_root_path)
+    end
+  end
 end

@@ -18,6 +18,12 @@ Rails.application.routes.draw do
 
   # LUCAS: Make devise sign_in route as root just to make things easier
   devise_scope :user do
-    root to: "users/sessions#new"
+    unauthenticated do
+      root to: "users/sessions#new", as: :unauthenticated_root
+    end
+
+    authenticated do
+      root to: "home#index", as: :authenticated_root
+    end
   end
 end

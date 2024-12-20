@@ -11,9 +11,19 @@
 </head>
 
 <body class="bg-icy">
-<header class="d-flex justify-content-center align-items-center w-100">
-  <%= image_tag "logo.svg", class: "d-flex m-auto w-75 w-lg-25" %>
-</header>
+
+<nav class="d-flex justify-content-between align-items-center w-100 p-2" style="height: max-content;">
+  <div>
+    <%= image_tag "icon.svg", class: "d-flex m-auto", style: "height: 3rem" %>
+  </div>
+
+  <div>
+    <ul class="d-flex p-2 gap-2 h-100">
+      <li><%= link_to "About", "/", class: "p-2" %></li>
+      <li><%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "p-2" %></li>
+    </ul>
+  </div>
+</nav>
 
 <main class="w-100">
   <%= yield %>
@@ -22,9 +32,5 @@
 <footer class="d-flex justify-content-center align-items-center p-2 w-100">
   <small><span>Skill Pinpoint</span> is offered by <a href="https://lucasbarretto.com">Lucas Barretto</a>.</small>
 </footer>
-
-<div id="flash" class="flash">
-  <%= render 'layouts/shared/flash', flash: flash %>
-</div>
 </body>
 </html>

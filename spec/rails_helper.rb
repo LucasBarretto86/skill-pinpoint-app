@@ -41,6 +41,10 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   Capybara.default_driver = :selenium_chrome_headless
 
+  config.before(:each, type: :system) do
+    driven_by(:rack_test)
+  end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join("spec/fixtures")

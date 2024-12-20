@@ -4,18 +4,23 @@ class Users::SessionsController < Devise::SessionsController
   respond_to :html, :turbo_stream
 
   def new
-    super
   end
 
   def create
     @user = User.find_by(email: session_params[:email])
 
-    if @user.valid_password?(session_params[:password])
+    if @user&.valid_password?(session_params[:password])
       sign_in(@user)
-      redirect_to root_path, status: :ok, flash: { success: "Welcome #{@user.email}!" }
+      redirect_to authenticated_root_path, flash: { success: "Welcome #{@user.email}!" }
     else
-      render :new, flash: { error: I18n.t("devise.failure.invalid") }, status: :unprocessable_entity
+      flash.now[:error] = "Invalid email or password."
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    sign_out(current_user)
+    redirect_to unauthenticated_root_path, flash: { success: "Logged out!" }
   end
 
   private

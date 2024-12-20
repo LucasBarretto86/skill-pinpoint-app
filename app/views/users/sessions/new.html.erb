@@ -1,6 +1,6 @@
-<div class="container mt-5 w-lg-50 w-100">
-  <h3 class="text-center">Welcome! Sign In</h3>
-  <p class="text-center">Find the skill you need!</p>
+<div class="container mt-5 w-lg-25 w-100" style="min-width: 24rem;">
+  <h3 class="text-center">Welcome!</h3>
+  <p class="text-center">Sign in and find the skill you need!</p>
 
   <%= form_for(User.new, scope: :user, url: user_session_path, method: :post, html: { class: "form-horizontal" }) do |form| %>
     <div class="mb-3">

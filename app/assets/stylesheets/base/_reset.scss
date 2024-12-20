@@ -8,6 +8,7 @@
 html, body {
   position: relative;
   box-sizing: inherit;
+  color: #393D3F;
 }
 
 body {
@@ -76,4 +77,9 @@ a:hover {
   font-size: 0.8rem;
   color: red;
   padding-left: 1ch;
+}
+
+ul, ol, li {
+  list-style: none !important;
+  margin-bottom: 0;
 }
