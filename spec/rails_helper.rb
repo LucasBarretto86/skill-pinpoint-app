@@ -35,7 +35,16 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  # LUCAS: Setup FactoryBot
   config.include FactoryBot::Syntax::Methods
+  # LUCAS: Setup Capybara por system tests
+  config.include Capybara::DSL
+  Capybara.default_driver = :selenium_chrome_headless
+  config.before(:each, type: :system) do
+    driven_by(:rack_test)
+  end
+
+  config.include Devise::Test::IntegrationHelpers
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [

@@ -32,3 +32,27 @@ class Survey::Response < ApplicationRecord
       self.answered_at ||= Time.current
     end
 end
+
+# == Schema Information
+#
+# Table name: survey_responses
+#
+#  id                    :bigint           not null, primary key
+#  answer                :string           default(""), not null
+#  answered_at           :datetime
+#  comment               :text             default("")
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  survey_participant_id :bigint           not null
+#  survey_question_id    :bigint           not null
+#
+# Indexes
+#
+#  index_survey_responses_on_survey_participant_id  (survey_participant_id)
+#  index_survey_responses_on_survey_question_id     (survey_question_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (survey_participant_id => survey_participants.id)
+#  fk_rails_...  (survey_question_id => survey_questions.id)
+#

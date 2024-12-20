@@ -1,0 +1,74 @@
+// Colors
+.graphite {
+  @include my-colors(graphite, color);
+}
+
+.slateblue {
+  @include my-colors(slateblue, color);
+}
+
+.icy {
+  @include my-colors(icy, color);
+}
+
+.aegean {
+  @include my-colors(aegean, color);
+}
+
+.teal {
+  @include my-colors(teal, color);
+}
+
+.marine {
+  @include my-colors(marine, color);
+}
+
+// Background Colors
+.bg-graphite {
+  @include my-colors(graphite, background-color);
+}
+
+.bg-slateblue {
+  @include my-colors(slateblue, background-color);
+}
+
+.bg-icy {
+  @include my-colors(icy, background-color);
+}
+
+.bg-aegean {
+  @include my-colors(aegean, background-color);
+}
+
+.bg-teal {
+  @include my-colors(teal, background-color);
+}
+
+.bg-marine {
+  @include my-colors(marine, background-color);
+}
+
+// Border colors
+.border-graphite {
+  @include my-colors(graphite, border-color);
+}
+
+.border-slateblue {
+  @include my-colors(slateblue, border-color);
+}
+
+.border-icy {
+  @include my-colors(icy, border-color);
+}
+
+.border-aegean {
+  @include my-colors(aegean, border-color);
+}
+
+.border-teal {
+  @include my-colors(teal, border-color);
+}
+
+.border-marine {
+  @include my-colors(marine, border-color);
+}

@@ -15,7 +15,27 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require "simplecov"
+
 RSpec.configure do |config|
+  SimpleCov.start "rails" do
+    enable_coverage(:branch)
+    primary_coverage(:branch)
+
+    add_group "Models", "app/models"
+    add_group "Controllers", "app/controllers"
+    add_group "Helpers", "app/helpers"
+    add_group "Libraries", "app/libs"
+    add_group "Services", "app/controllers/services"
+    add_group "Businesses", "app/controllers/business"
+    add_group "Mailers", "app/mailers"
+    add_group "Channels", "app/channel"
+    add_group "Jobs", "app/jobs"
+
+    add_filter "spec"
+    add_filter "config"
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -46,8 +66,8 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-# The settings below are suggested to provide a good initial experience
-# with RSpec, but feel free to customize to your heart's content.
+  # The settings below are suggested to provide a good initial experience
+  # with RSpec, but feel free to customize to your heart's content.
 =begin
   # This allows you to limit a spec run to individual examples or groups
   # you care about by tagging them with `:focus` metadata. When nothing

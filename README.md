@@ -3,11 +3,11 @@
 - [Skill Pinpoint App](#skill-pinpoint-app)
   - [Tasks](#tasks)
     - [Completion tracking](#completion-tracking)
-  - [Solution: Comments and observations](#solution-comments-and-observations)
     - [Stack](#stack)
     - [Getting Started](#getting-started)
       - [Running app](#running-app)
       - [Loading csv data](#loading-csv-data)
+      - [About tests and coverage](#about-tests-and-coverage)
 
 ---
 
@@ -17,7 +17,7 @@
 
 - [X] [Task 1: Create a Basic Database](#task-1-create-a-basic-database)
 - [ ] [Task 2: Create a Basic Dashboard](#task-2-create-a-basic-dashboard)
-- [ ] [Task 3: Create a Test Suite](#task-3-create-a-test-suite)
+- [x] [Task 3: Create a Test Suite](#task-3-create-a-test-suite)
 - [X] [Task 4: Create a Docker Compose Setup](#task-4-create-a-docker-compose-setup)
 - [ ] [Task 5: Exploratory Data Analysis](#task-5-exploratory-data-analysis)
 - [ ] [Task 6: Data Visualization - Company Level](#task-6-data-visualization---company-level)
@@ -26,7 +26,7 @@
 - [ ] [Task 9: Build a Simple API](#task-9-build-a-simple-api)
 - [ ] [Task 10: Sentiment Analysis](#task-10-sentiment-analysis)
 - [ ] [Task 11: Report Generation](#task-11-report-generation)
-- [ ] [Task 12: Creative Exploration](#task-12-creative-exploration)
+- [x] [Task 12: Creative Exploration](#task-12-creative-exploration)
 
 ---
 
@@ -260,12 +260,13 @@ Portuguese.
 - Ruby 3.3.0
 - Rails 7.1.4
 - Postgresql 16
-- Rspec + FactoryBot + Faker
+- Rspec + FactoryBot + Faker + Capybara + Selenium
 - Devise
 - Bootstrap
 - Docker
 - GitHub actions for Linter and CI
 - Rubocop and Brakeman
+- SimpleCov
 
 ### Getting Started
 
@@ -303,3 +304,14 @@ On rails console:
 ```rb
 SurveyCSVProcessor.new('data').inject! 
 ```
+
+#### About tests and coverage
+
+I have implemented the gem SimpleCov to generate a bit of coverage, to check it just need to run tests
+
+```sh
+bundle exec rspec .
+```
+
+> But I got a bit frustrated trying to configure it because it keeps counting tests for files that I didn't touch,
+> or that doesn't even have content

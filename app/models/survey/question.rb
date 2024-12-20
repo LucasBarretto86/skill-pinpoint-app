@@ -12,3 +12,23 @@ class Survey::Question < ApplicationRecord
   validates :prompt, presence: true
   validates :kind, inclusion: { in: QUESTION_KINDS }
 end
+
+# == Schema Information
+#
+# Table name: survey_questions
+#
+#  id             :bigint           not null, primary key
+#  kind           :string           default(NULL), not null
+#  prompt         :text             default(""), not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  survey_poll_id :bigint           not null
+#
+# Indexes
+#
+#  index_survey_questions_on_survey_poll_id  (survey_poll_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (survey_poll_id => survey_polls.id)
+#
