@@ -19,12 +19,12 @@ RSpec.describe "Users::Registrations", type: :request do
       { user: { email: Faker::Internet.email, password: "password", password_confirmation: "wrong_password" } }
     end
 
-    it "returns http success" do
+    it "creates new user if params are valid" do
       post user_registration_path, params: valid_params
-      expect(response).to have_http_status(:redirect)
+      expect(response).to have_http_status(:created)
     end
 
-    it "returns http unprocessable entity" do
+    it "returns http unprocessable if params are invalid" do
       post user_registration_path, params: invalid_params
       expect(response).to have_http_status(:unprocessable_entity)
     end

@@ -45,5 +45,12 @@ RSpec.describe User, type: :model do
       expect(user.errors.count).to eq(1)
       expect(user.errors["password"]).to eq(["is too long (maximum is 16 characters)"])
     end
+
+    it "validates password confirmation" do
+      user = build(:user, password: "123456789", password_confirmation: "9999999999")
+      expect(user).to be_invalid
+      expect(user.errors.count).to eq(1)
+      expect(user.errors["password_confirmation"]).to eq(["doesn't match Password"])
+    end
   end
 end

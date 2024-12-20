@@ -3,36 +3,33 @@
 require "rails_helper"
 
 RSpec.describe "Registrations", type: :system do
-  let(:user) { create(:user) }
-
   context "When valid sign up data is sent" do
-    it "login user and redirect to home page" do
+    it "creates user, sign it in and redirect to home page" do
       visit "/sign-up"
 
-      fill_in "Email", with: user.email
+      fill_in "Email", with: Faker::Internet.email
       fill_in "Password", with: "password"
+      fill_in "Repeat password", with: "password"
 
-      click_button "Sign In"
+      click_button "Sign Up"
 
-      expect(page).to have_current_path(authenticated_root_path)
-      expect(page).to have_content("Home")
-      expect(page).to have_content("But, there's nothing to seen here...")
+      expect(page).to have_current_path(home_path)
     end
   end
 
   context "When invalid sign up data is sent" do
-    it "rerender the new session page with flash error" do
+    it "rerender form and show field errors" do
       visit "/sign-up"
 
-      fill_in "Email", with: user.email
-      fill_in "Password", with: "wrong_password"
-      fill_in "Password", with: "wrong_password"
+      fill_in "Email", with: ""
+      fill_in "Password", with: "pass"
+      fill_in "Repeat password", with: "wrong-password"
 
-      click_button "Sign In"
+      click_button "Sign Up"
 
-      expect(page).to have_content("Invalid email or password.")
-      expect(page).to have_content("Welcome!")
-      expect(page).to have_content("Sign in and find the skill you need!")
+      expect(page).to have_text("can't be blank")
+      expect(page).to have_text("is too short (minimum is 8 characters)")
+      expect(page).to have_content("doesn't match Password")
     end
   end
 
@@ -40,7 +37,7 @@ RSpec.describe "Registrations", type: :system do
     it "redirects_to registration page" do
       visit "/sign-up"
 
-      click_link "Sign up, pal!"
+      click_link "Sign-in here!"
 
       expect(page).to have_current_path(new_user_session_path)
     end

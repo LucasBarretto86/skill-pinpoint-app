@@ -15,7 +15,7 @@ RSpec.describe Users::SessionsController, type: :request do
 
     it "returns http success" do
       post user_session_path, params: { user: { email: user.email, password: user.password } }
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to(home_path)
     end
   end
 
@@ -24,7 +24,7 @@ RSpec.describe Users::SessionsController, type: :request do
 
     it "returns http success" do
       delete destroy_user_session_path(user)
-      expect(response).to assert_redirected_to(unauthenticated_root_path)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end

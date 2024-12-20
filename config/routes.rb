@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   }, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
-    passwords: 'users/passwords'
   }
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -19,11 +18,11 @@ Rails.application.routes.draw do
   # LUCAS: Make devise sign_in route as root just to make things easier
   devise_scope :user do
     unauthenticated do
-      root to: "users/sessions#new", as: :unauthenticated_root
+      root to: "users/sessions#new", as: :unauthenticated
     end
 
     authenticated do
-      root to: "home#index", as: :authenticated_root
+      root to: "home#index", as: :home
     end
   end
 end

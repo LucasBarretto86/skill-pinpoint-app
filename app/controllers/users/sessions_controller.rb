@@ -11,7 +11,7 @@ class Users::SessionsController < Devise::SessionsController
 
     if @user&.valid_password?(session_params[:password])
       sign_in(@user)
-      redirect_to authenticated_root_path, flash: { success: "Welcome #{@user.email}!" }
+      redirect_to home_path, flash: { success: "Welcome #{@user.email}!" }
     else
       flash.now[:error] = "Invalid email or password."
       render :new, status: :unprocessable_entity
@@ -20,7 +20,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def destroy
     sign_out(current_user)
-    redirect_to unauthenticated_root_path, flash: { success: "Logged out!" }
+    redirect_to unauthenticated_path, flash: { success: "Signed out!" }
   end
 
   private

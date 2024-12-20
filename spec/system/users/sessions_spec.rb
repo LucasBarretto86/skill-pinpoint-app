@@ -14,7 +14,7 @@ RSpec.describe "Sessions", type: :system do
 
       click_button "Sign In"
 
-      expect(page).to have_current_path(authenticated_root_path)
+      expect(page).to have_current_path(home_path)
       expect(page).to have_content("Home")
       expect(page).to have_content("But, there's nothing to seen here...")
     end

@@ -1,4 +1,4 @@
-<div class="container mt-5 w-lg-25 w-100">
+<div class="container mt-5 w-lg-25 w-100" style="min-width: 24rem;">
   <h3 class="text-center">Sign Up</h3>
   <p class="text-center">Sign up and access the wonders of nothingness!</p>
 
@@ -6,15 +6,18 @@
     <div class="mb-3">
       <%= form.label :email, class: "form-label" %>
       <%= form.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+      <%= field_error_message(@user, :email) %>
     </div>
     <div class="mb-3">
       <%= form.label :password, class: "form-label" %>
       <%= form.password_field :password, class: "form-control", autocomplete: "current-password" %>
+      <%= field_error_message(@user, :password) %>
     </div>
 
     <div class="mb-3">
-      <%= form.label :password_confirm, class: "form-label" %>
-      <%= form.password_field :password_confirm, class: "form-control", autocomplete: "current-password" %>
+      <%= form.label :password_confirmation, "Repeat password", class: "form-label" %>
+      <%= form.password_field :password_confirmation, class: "form-control", autocomplete: "current-password" %>
+      <%= field_error_message(@user, :password_confirmation) %>
     </div>
     <div class="mb-3 text-center">
       <p><small>Already have user!? <%= link_to "Sign-in here!", new_user_session_path %></small></p>

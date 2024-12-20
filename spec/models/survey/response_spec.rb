@@ -61,7 +61,7 @@ RSpec.describe Survey::Response, type: :model do
         response = build(:response, :valid_answer)
 
         expect { response.save! }.to change { response.answered_at }.from(nil)
-        expect(response.answered_at.to_time).to be_instance_of(Time)
+        expect(response.answered_at&.to_time).to be_instance_of(Time)
       end
     end
   end
