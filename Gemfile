@@ -86,4 +86,8 @@ end
 group :test do
   # LUCAS: Since coverage is important I decided to use a tool to produce some artifact regarding coverage
   gem "simplecov", require: false
+
+  # LUCAS: Setup System tests
+  gem "capybara", require: false
+  gem "selenium-webdriver", require: false
 end

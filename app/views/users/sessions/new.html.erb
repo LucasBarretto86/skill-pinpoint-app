@@ -1,18 +1,20 @@
-<div class="container mt-5">
-  <h2 class="text-center">Log In</h2>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f| %>
+<div class="container mt-5 w-lg-50 w-100">
+  <h3 class="text-center">Welcome! Sign In</h3>
+  <p class="text-center">Find the skill you need!</p>
+
+  <%= form_for(User.new, scope: :user, url: user_session_path, method: :post, html: { class: "form-horizontal" }) do |form| %>
     <div class="mb-3">
-      <%= f.label :email, class: "form-label" %>
-      <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+      <%= form.label :email, class: "form-label" %>
+      <%= form.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
     </div>
     <div class="mb-3">
-      <%= f.label :password, class: "form-label" %>
-      <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+      <%= form.label :password, class: "form-label" %>
+      <%= form.password_field :password, class: "form-control", autocomplete: "current-password" %>
     </div>
-    <div class="mb-3 form-check">
-      <%= f.check_box :remember_me, class: "form-check-input" if devise_mapping.rememberable? %>
-      <%= f.label :remember_me, class: "form-check-label" if devise_mapping.rememberable? %>
+    <div class="mb-3 text-center">
+      <p><small>New around here!? <%= link_to "Sign up, pal!", new_user_registration_path %></small></p>
     </div>
-    <%= f.submit "Log In", class: "btn btn-primary w-100" %>
+
+    <%= form.submit "Sign In", class: "btn btn-slateblue w-100" %>
   <% end %>
 </div>

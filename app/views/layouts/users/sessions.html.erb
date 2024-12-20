@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SkillPinpointApp</title>
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body class="bg-icy">
+<header class="d-flex justify-content-center align-items-center w-100">
+  <%= image_tag "logo.svg", class: "d-flex m-auto w-75 w-lg-25" %>
+</header>
+
+<main class="w-100">
+  <%= yield %>
+</main>
+
+<footer class="d-flex justify-content-center align-items-center p-2 w-100">
+  <small><span>My App</span> is offered by <a href="https://lucasbarretto.com">Lucas Barretto</a>.</small>
+</footer>
+</body>
+</html>

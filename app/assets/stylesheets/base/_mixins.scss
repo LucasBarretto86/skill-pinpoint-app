@@ -1,0 +1,15 @@
+@mixin w-sizes($size, $breakpoint) {
+  @media (min-width: map-get($breakpoints, #{$breakpoint})) {
+    width: $size !important;
+  }
+}
+
+@mixin h-sizes($size, $breakpoint) {
+  @media (min-width: map-get($breakpoints, #{$breakpoint})) {
+    height: $size !important;
+  }
+}
+
+@mixin my-colors($color, $prop) {
+  #{$prop}: map-get($colors, $color) !important;
+}

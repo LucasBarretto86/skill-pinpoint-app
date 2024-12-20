@@ -1,0 +1,39 @@
+.btn-graphite {
+  @include my-colors(graphite, background-color);;
+  @include my-colors(graphite, border-color);
+  @include my-colors(icy, color);
+}
+
+.btn-slateblue {
+  @include my-colors(slateblue, background-color);
+  @include my-colors(slateblue, border-color);
+  @include my-colors(icy, color);
+}
+
+.btn-icy {
+  @include my-colors(icy, background-color);
+  @include my-colors(slateblue, border-color);
+  @include my-colors(slateblue, color);
+}
+
+.btn-aegean {
+  @include my-colors(aegean, background-color);
+  @include my-colors(aegean, border-color);
+  @include my-colors(icy, color);
+}
+
+.btn-teal {
+  @include my-colors(eal, background-color);
+  @include my-colors(eal, border-color);
+  @include my-colors(icy, color);
+}
+
+.btn-marine {
+  @include my-colors(marine, background-color);
+  @include my-colors(marine, border-color);
+  @include my-colors(icy, color);
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
