@@ -8,7 +8,8 @@
 /.bundle
 
 # Ignore all environment files (except templates).
-/.env*
+# LUCAS: Just commented to make it easier to be tested  by the interviewer
+#/.env
 !/.env*.erb
 
 # Ignore all logfiles and tempfiles.
@@ -34,5 +35,8 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# LUCAS: Avoid unnecessary files on repo
 .idea
 /coverage/
+
+/config/credentials/production.key

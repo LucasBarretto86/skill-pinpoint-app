@@ -8,11 +8,8 @@ services:
     container_name: skill-pinpoint-app_c
     depends_on:
       - postgres
-    environment:
-      RAILS_ENV: "development"
-      DB_HOST: "postgres"
-      DB_USERNAME: "postgres"
-      DB_PASSWORD: "postgres"
+    env_file:
+      - .env.development
     ports:
       - "3000:3000"
     volumes:

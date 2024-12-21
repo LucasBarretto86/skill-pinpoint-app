@@ -14,7 +14,7 @@ class Users::SessionsController < Devise::SessionsController
       redirect_to home_path, flash: { success: "Welcome #{@user.email}!" }
     else
       flash.now[:error] = "Invalid email or password."
-      render :new, status: :unprocessable_entity
+      render :new, status: :unauthorized
     end
   end
 

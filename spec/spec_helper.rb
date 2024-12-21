@@ -18,6 +18,7 @@
 require "simplecov"
 
 RSpec.configure do |config|
+  # LUCAS: SimpleCov configuration
   SimpleCov.start "rails" do
     enable_coverage(:branch)
     primary_coverage(:branch)
