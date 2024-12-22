@@ -4,15 +4,11 @@ module APIRoutes
       namespace :api do
         defaults format: :json do
           devise_scope :user do
-            unauthenticated do
-              # Simple public API to check health of API
-              get "/health-check", to: "health_check#show"
-              post "/sign-in", to: "sessions#create", as: :sessions
-            end
+            # Simple public API to check health of API
+            get "/health-check", to: "health_check#show"
+            post "/sign-in", to: "sessions#create", as: :sessions
 
-            authenticated do
-              resource :surveys, only: [:index]
-            end
+            resources :surveys, only: [:index]
           end
         end
       end

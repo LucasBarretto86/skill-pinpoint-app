@@ -49,7 +49,9 @@ RSpec.configure do |config|
     driven_by(:rack_test)
   end
 
+  # LUCAS: Lots of Devise helpers
   config.include Devise::Test::IntegrationHelpers
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [

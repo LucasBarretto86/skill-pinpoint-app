@@ -25,13 +25,15 @@ RSpec.configure do |config|
 
     add_group "Models", "app/models"
     add_group "Controllers", "app/controllers"
+    add_group "Concerns", %w[app/controllers/concerns app/concerns app/models/concerns]
     add_group "Helpers", "app/helpers"
     add_group "Libraries", "app/libs"
-    add_group "Services", "app/controllers/services"
-    add_group "Businesses", "app/controllers/business"
+    add_group "Services", "app/services"
+    add_group "Businesses", "app/business"
     add_group "Mailers", "app/mailers"
     add_group "Channels", "app/channel"
     add_group "Jobs", "app/jobs"
+    add_group "Serializers", "app/serializers"
 
     add_filter "spec"
     add_filter "config"
