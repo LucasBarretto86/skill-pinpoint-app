@@ -17,16 +17,16 @@
 
 - [X] [Task 1: Create a Basic Database](#task-1-create-a-basic-database)
 - [ ] [Task 2: Create a Basic Dashboard](#task-2-create-a-basic-dashboard)
-- [x] [Task 3: Create a Test Suite](#task-3-create-a-test-suite)
+- [X] [Task 3: Create a Test Suite](#task-3-create-a-test-suite)
 - [X] [Task 4: Create a Docker Compose Setup](#task-4-create-a-docker-compose-setup)
 - [ ] [Task 5: Exploratory Data Analysis](#task-5-exploratory-data-analysis)
 - [ ] [Task 6: Data Visualization - Company Level](#task-6-data-visualization---company-level)
 - [ ] [Task 7: Data Visualization - Area Level](#task-7-data-visualization---area-level)
 - [ ] [Task 8: Data Visualization - Employee Level](#task-8-data-visualization---employee-level)
-- [ ] [Task 9: Build a Simple API](#task-9-build-a-simple-api)
+- [X] [Task 9: Build a Simple API](#task-9-build-a-simple-api)
 - [ ] [Task 10: Sentiment Analysis](#task-10-sentiment-analysis)
 - [ ] [Task 11: Report Generation](#task-11-report-generation)
-- [x] [Task 12: Creative Exploration](#task-12-creative-exploration)
+- [X] [Task 12: Creative Exploration](#task-12-creative-exploration)
 
 ---
 
