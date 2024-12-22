@@ -11,7 +11,7 @@ module APIRoutes
             end
 
             authenticated do
-
+              resource :surveys, only: [:index]
             end
           end
         end

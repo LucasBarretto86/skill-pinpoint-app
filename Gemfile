@@ -66,6 +66,9 @@ group :development, :test do
 
   # LUCAS: Just to make secrets easier on development and testing
   gem "dotenv-rails"
+
+  # LUCAS: I want use serializers to return API responses
+  gem "active_model_serializers"
 end
 
 group :development do
