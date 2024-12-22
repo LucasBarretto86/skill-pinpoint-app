@@ -35,6 +35,9 @@ gem "jbuilder"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
+# LUCAS: JWT to manage API authentication
+gem "devise-jwt"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -60,6 +63,12 @@ group :development, :test do
 
   # LUCAS: Since I'm using importmaps I don't want to setup NodeJs, so I will go with mini_racer
   gem "mini_racer"
+
+  # LUCAS: Just to make secrets easier on development and testing
+  gem "dotenv-rails"
+
+  # LUCAS: I want use serializers to return API responses
+  gem "active_model_serializers"
 end
 
 group :development do

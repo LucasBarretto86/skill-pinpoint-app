@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe "Homes", type: :request do
-  let!(:user) { create(:user) }
+  let(:user) { create(:user) }
 
   before { login_as(user, scope: :user) }
 

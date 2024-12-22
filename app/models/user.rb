@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :jwt_authenticatable,
+    :registerable, :recoverable, :rememberable, :validatable,
+    # LUCAS: What?! Something are only possible with GPT assistance, I never had a situation like that, normally when I create APIs I use regular jwt gem
+    jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
 end
 
 # == Schema Information
