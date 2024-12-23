@@ -1,0 +1,170 @@
+	"info": {
+		"_postman_id": "fbe21aee-7fb4-4599-beae-09963730861b",
+		"name": "skill-pinpoint-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33623494"
+	},
+	"item": [
+		{
+			"name": "API",
+			"item": [
+				{
+					"name": "Private",
+					"item": [
+						{
+							"name": "Surveys",
+							"item": [
+								{
+									"name": "List Surveys",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/surveys?page=1&per_page=15",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"surveys"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "per_page",
+													"value": "15"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6IiIsImlhdCI6MTczNDgzNTM3OCwiZXhwIjoxNzM0OTIxNzc4LCJqdGkiOiI4MGYzZWIxNS01MTg0LTQ0NjMtOTVlYy1kMjQwY2UxOTkzMDkifQ.Ds7uBlzUpteQg2UjVt58jkstyOGT0p11YEshpMzDv_8",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Public",
+					"item": [
+						{
+							"name": "HealthCheck",
+							"item": [
+								{
+									"name": "Check Health Status",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/health-check",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"health-check"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Sessions",
+							"item": [
+								{
+									"name": "Sign In",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"user\": {\n    \"email\" : \"lucas@example.com\",\n    \"password\": \"123456789\"\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/sign-in",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"sign-in"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000/api",
+			"type": "string"
+		}
+	]
+}
